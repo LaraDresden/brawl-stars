@@ -1,0 +1,129 @@
+body {
+    background: linear-gradient(135deg, #1a1f2d, #0d1117);
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(90deg, #ffcc00, #ff9500);
+    color: #000;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.2rem;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+section {
+    background: rgba(43, 47, 58, 0.7);
+    margin: 25px 0;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+h2 {
+    color: #ffcc00;
+    border-bottom: 2px solid #ffcc00;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+h3 {
+    color: #ff9500;
+    margin: 15px 0 10px 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: rgba(255, 255, 255, 0.08);
+    margin: 12px 0;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #ffcc00;
+    transition: transform 0.2s;
+}
+
+li:hover {
+    transform: translateX(5px);
+    background: rgba(255, 204, 0, 0.1);
+}
+
+.stats {
+    float: right;
+    color: #ff9500;
+    font-size: 0.9em;
+}
+
+#news-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.news-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.news-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.news-link {
+    display: inline-block;
+    background: #ffcc00;
+    color: #000;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.news-link:hover {
+    background: #ff9500;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #aaa;
+    font-size: 0.9em;
+}
+
+@media (max-width: 768px) {
+    main {
+        padding: 10px;
+    }
+    
+    header h1 {
+        font-size: 1.8rem;
+    }
+    
+    #news-container {
+        grid-template-columns: 1fr;
+    }
+}
