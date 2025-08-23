@@ -1,25 +1,129 @@
 {
-  "lastUpdated": "2025-08-23T06:49:20.654Z",
-  "topBrawlers": [],
-  "teams": [],
+  "lastUpdated": "2025-08-23T17:35:32.362Z",
+  "topBrawlers": [
+    {
+      "name": "Lola",
+      "winRate": 74.17,
+      "useRate": 45
+    },
+    {
+      "name": "Rosa",
+      "winRate": 71.35,
+      "useRate": 45
+    },
+    {
+      "name": "Bit",
+      "winRate": 70.73,
+      "useRate": 45
+    },
+    {
+      "name": "Ruffs",
+      "winRate": 70.65,
+      "useRate": 45
+    },
+    {
+      "name": "Otis",
+      "winRate": 70.1,
+      "useRate": 45
+    }
+  ],
+  "teams": [
+    {
+      "members": [
+        {
+          "name": "Lola"
+        },
+        {
+          "name": "Rosa"
+        }
+      ],
+      "winRate": 84
+    },
+    {
+      "members": [
+        {
+          "name": "Rosa"
+        },
+        {
+          "name": "Bit"
+        }
+      ],
+      "winRate": 82
+    },
+    {
+      "members": [
+        {
+          "name": "Lola"
+        },
+        {
+          "name": "Bit"
+        }
+      ],
+      "winRate": 81
+    },
+    {
+      "members": [
+        {
+          "name": "Lola"
+        },
+        {
+          "name": "Rosa"
+        },
+        {
+          "name": "Bit"
+        }
+      ],
+      "winRate": 85
+    }
+  ],
   "modes": [
     {
       "name": "Gem Grab",
-      "topBrawlers": []
+      "topBrawlers": [
+        {
+          "name": "Lola"
+        },
+        {
+          "name": "Rosa"
+        },
+        {
+          "name": "Bit"
+        }
+      ]
     },
     {
       "name": "Showdown",
-      "topBrawlers": []
+      "topBrawlers": [
+        {
+          "name": "Lola"
+        },
+        {
+          "name": "Rosa"
+        },
+        {
+          "name": "Bit"
+        }
+      ]
     },
     {
       "name": "Brawl Ball",
-      "topBrawlers": []
+      "topBrawlers": [
+        {
+          "name": "Lola"
+        },
+        {
+          "name": "Rosa"
+        },
+        {
+          "name": "Bit"
+        }
+      ]
     }
   ],
   "news": [
     {
       "title": "Tierlist aktualisiert (mmonster.co)",
-      "date": "2025-08-23T06:49:20.654Z",
+      "date": "2025-08-23T17:35:32.361Z",
       "url": "https://mmonster.co/blog/brawl-stars-meta"
     }
   ]
