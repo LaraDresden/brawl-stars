@@ -1,0 +1,8 @@
+{
+  "name": "brawl-stars-meta",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "fetch:meta": "node ./scripts/fetch-meta.js"
+  }
+}
