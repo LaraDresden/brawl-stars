@@ -1,30 +1,26 @@
 {
-  "lastUpdated": "2025-08-23T00:00:00Z",
-  "topBrawlers": [
-    { "name": "Mortis", "winRate": 81, "useRate": 34 },
-    { "name": "Bea", "winRate": 79, "useRate": 36 },
-    { "name": "Mandy", "winRate": 78, "useRate": 32 },
-    { "name": "Brock", "winRate": 77, "useRate": 28 },
-    { "name": "Piper", "winRate": 76, "useRate": 30 }
-  ],
-  "teams": [
-    { "members": [{"name":"Mortis"},{"name":"Bea"}], "winRate": 84 },
-    { "members": [{"name":"Mandy"},{"name":"Brock"}], "winRate": 82 },
-    { "members": [{"name":"Piper"},{"name":"Bea"}], "winRate": 80 },
-    { "members": [{"name":"Mortis"},{"name":"Brock"},{"name":"Piper"}], "winRate": 83 },
-    { "members": [{"name":"Bea"},{"name":"Mandy"},{"name":"Brock"}], "winRate": 81 },
-    { "members": [{"name":"Mortis"},{"name":"Bea"},{"name":"Mandy"},{"name":"Brock"}], "winRate": 85 }
-  ],
+  "lastUpdated": "2025-08-23T00:31:13.289Z",
+  "topBrawlers": [],
+  "teams": [],
   "modes": [
-    { "name": "Gem Grab", "topBrawlers": [{"name":"Mortis"},{"name":"Bea"},{"name":"Mandy"}] },
-    { "name": "Showdown", "topBrawlers": [{"name":"Brock"},{"name":"Mortis"},{"name":"Piper"}] },
-    { "name": "Brawl Ball", "topBrawlers": [{"name":"Bea"},{"name":"Mandy"},{"name":"Mortis"}] },
-    { "name": "Bounty", "topBrawlers": [{"name":"Piper"},{"name":"Brock"},{"name":"Bea"}] },
-    { "name": "Heist", "topBrawlers": [{"name":"Brock"},{"name":"Mortis"},{"name":"Mandy"}] }
+    {
+      "name": "Gem Grab",
+      "topBrawlers": []
+    },
+    {
+      "name": "Showdown",
+      "topBrawlers": []
+    },
+    {
+      "name": "Brawl Ball",
+      "topBrawlers": []
+    }
   ],
   "news": [
-    { "title": "Tierlist aktualisiert", "date": "2025-08-22T12:00:00Z", "url": "https://brawlify.com/tiers" },
-    { "title": "Balance-Änderungen live", "date": "2025-08-20T09:00:00Z", "url": "https://brawlstars.com/" },
-    { "title": "Neue Skins", "date": "2025-08-18T18:00:00Z", "url": "https://brawlstars.com/" }
+    {
+      "title": "Tierlist aktualisiert (mmonster.co)",
+      "date": "2025-08-23T00:31:13.289Z",
+      "url": "https://mmonster.co/blog/brawl-stars-meta"
+    }
   ]
 }
