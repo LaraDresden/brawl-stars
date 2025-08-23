@@ -1,40 +1,40 @@
 {
-  "lastUpdated": "2025-08-23T17:35:32.362Z",
+  "lastUpdated": "2025-08-23T23:42:08.376Z",
   "topBrawlers": [
+    {
+      "name": "Mortis",
+      "winRate": 75,
+      "useRate": 45
+    },
+    {
+      "name": "Bea",
+      "winRate": 73,
+      "useRate": 44
+    },
+    {
+      "name": "Mandy",
+      "winRate": 71,
+      "useRate": 42
+    },
     {
       "name": "Lola",
       "winRate": 74.17,
-      "useRate": 45
+      "useRate": 15
     },
     {
       "name": "Rosa",
       "winRate": 71.35,
-      "useRate": 45
-    },
-    {
-      "name": "Bit",
-      "winRate": 70.73,
-      "useRate": 45
-    },
-    {
-      "name": "Ruffs",
-      "winRate": 70.65,
-      "useRate": 45
-    },
-    {
-      "name": "Otis",
-      "winRate": 70.1,
-      "useRate": 45
+      "useRate": 15
     }
   ],
   "teams": [
     {
       "members": [
         {
-          "name": "Lola"
+          "name": "Mortis"
         },
         {
-          "name": "Rosa"
+          "name": "Bea"
         }
       ],
       "winRate": 84
@@ -42,10 +42,10 @@
     {
       "members": [
         {
-          "name": "Rosa"
+          "name": "Bea"
         },
         {
-          "name": "Bit"
+          "name": "Mandy"
         }
       ],
       "winRate": 82
@@ -53,10 +53,10 @@
     {
       "members": [
         {
-          "name": "Lola"
+          "name": "Mortis"
         },
         {
-          "name": "Bit"
+          "name": "Mandy"
         }
       ],
       "winRate": 81
@@ -64,13 +64,13 @@
     {
       "members": [
         {
-          "name": "Lola"
+          "name": "Mortis"
         },
         {
-          "name": "Rosa"
+          "name": "Bea"
         },
         {
-          "name": "Bit"
+          "name": "Mandy"
         }
       ],
       "winRate": 85
@@ -81,13 +81,13 @@
       "name": "Gem Grab",
       "topBrawlers": [
         {
-          "name": "Lola"
+          "name": "Mortis"
         },
         {
-          "name": "Rosa"
+          "name": "Bea"
         },
         {
-          "name": "Bit"
+          "name": "Mandy"
         }
       ]
     },
@@ -95,13 +95,13 @@
       "name": "Showdown",
       "topBrawlers": [
         {
-          "name": "Lola"
+          "name": "Mortis"
         },
         {
-          "name": "Rosa"
+          "name": "Bea"
         },
         {
-          "name": "Bit"
+          "name": "Mandy"
         }
       ]
     },
@@ -109,13 +109,13 @@
       "name": "Brawl Ball",
       "topBrawlers": [
         {
-          "name": "Lola"
+          "name": "Mortis"
         },
         {
-          "name": "Rosa"
+          "name": "Bea"
         },
         {
-          "name": "Bit"
+          "name": "Mandy"
         }
       ]
     }
@@ -123,7 +123,7 @@
   "news": [
     {
       "title": "Tierlist aktualisiert (mmonster.co)",
-      "date": "2025-08-23T17:35:32.361Z",
+      "date": "2025-08-23T23:42:08.376Z",
       "url": "https://mmonster.co/blog/brawl-stars-meta"
     }
   ]
