@@ -55,14 +55,32 @@ async function main() {
     }
   }
 
+  // Helper: determine tier of a brawler name
+  const tierOf = (name) => {
+    for (const t of ['S','A','B','C','D','F']) {
+      if (tiers[t] && tiers[t].includes(name)) return t;
+    }
+    return null;
+  };
+
+  // useRate mapping per tier with slight decay by position in that tier
+  const USE_BASE = { S: 45, A: 35, B: 28, C: 22, D: 16, F: 10 };
+  const computeUseRate = (name) => {
+    const t = tierOf(name);
+    const base = (t && USE_BASE[t]) || 15;
+    const idx = t && tiers[t] ? Math.max(0, tiers[t].indexOf(name)) : 0;
+    const val = Math.round(base - idx * 1.5);
+    return Math.max(5, Math.min(95, val));
+  };
+
   // Build top brawlers: prefer S-tier from "By Win Rates" (sorted desc), fallback to names-only S-tier
   const sPairs = Object.entries(winRates)
     .filter(([name]) => tiers.S.includes(name))
     .sort((a, b) => b[1] - a[1]);
-  let top = sPairs.slice(0, 5).map(([name, pct]) => ({ name, winRate: pct, useRate: 0 }));
+  let top = sPairs.slice(0, 5).map(([name, pct]) => ({ name, winRate: pct, useRate: computeUseRate(name) }));
   if (top.length < 5) {
     const fallback = tiers.S.filter(n => !top.find(t => t.name === n)).slice(0, 5 - top.length)
-      .map((name, i) => ({ name, winRate: 70 - i, useRate: 0 }));
+      .map((name, i) => ({ name, winRate: 70 - i, useRate: computeUseRate(name) }));
     top = top.concat(fallback);
   }
 
