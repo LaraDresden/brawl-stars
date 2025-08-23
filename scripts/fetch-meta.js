@@ -12,42 +12,59 @@ async function main() {
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const html = await res.text();
 
-  // Extract the big tier table block
-  // We look for the section "Brawl Stars Meta Tier List" with table-like lines
-  const sectionStart = html.indexOf('Brawl Stars Meta Tier List');
-  const slice = sectionStart >= 0 ? html.slice(sectionStart) : html;
+  // Extract base tiers section (names only)
+  const baseStart = html.indexOf('Brawl Stars Meta Tier List');
+  const baseSlice = baseStart >= 0 ? html.slice(baseStart) : html;
 
   const tiers = { S: [], A: [], B: [], C: [], D: [], F: [] };
-
-  // Simple regex to capture rows like "| S | Mortis Mortis Bea Bea Mandy Mandy |"
   const rowRegex = /\|\s*([SABCDF])\s*\|([^|]+)\|/g;
   let m;
-  while ((m = rowRegex.exec(slice)) !== null) {
+  while ((m = rowRegex.exec(baseSlice)) !== null) {
     const tier = m[1];
-    const names = m[2]
-      .replace(/<[^>]+>/g, ' ')
-      .split(/\s+/)
-      .map(s => s.trim())
-      .filter(Boolean);
-    // Names sometimes appear duplicated (e.g., Mortis Mortis) -> dedupe consecutive pairs
-    const deduped = [];
-    for (let i = 0; i < names.length; i++) {
-      if (i + 1 < names.length && names[i] === names[i + 1]) {
-        deduped.push(names[i]);
-        i++;
-      } else {
-        deduped.push(names[i]);
-      }
+    const content = m[2].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+    // Deduplicate immediate repeated names like "Mortis Mortis"
+    const tokens = content.split(' ');
+    const names = [];
+    for (let i = 0; i < tokens.length; i++) {
+      const cur = tokens[i];
+      const next = tokens[i + 1];
+      if (cur && next && cur === next) { names.push(cur); i++; } else { names.push(cur); }
     }
-    tiers[tier] = deduped;
+    tiers[tier] = names.filter(Boolean);
   }
 
-  // Build top brawlers from S tier (take first 5)
-  const top = (tiers.S || []).slice(0, 5).map((name, i) => ({
-    name,
-    winRate: 75 - i, // placeholder since page provides ranks, not exact win% per S-tier
-    useRate: 40 - i
-  }));
+  // Extract "By Win Rates" section to get real percentages
+  const byStart = html.indexOf('Meta Tier List Brawl Stars - By Win Rates');
+  const bySlice = byStart >= 0 ? html.slice(byStart) : '';
+  const winRates = {}; // name -> percent
+  if (bySlice) {
+    let rm;
+    while ((rm = rowRegex.exec(bySlice)) !== null) {
+      const tier = rm[1];
+      let line = rm[2].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+      // Collapse duplicates before dash: "Name Name — 74.17%" -> "Name — 74.17%"
+      line = line.replace(/([A-Za-z0-9 .&'\-]+)\s+\1\s+—/g, '$1 —');
+      // Some pages may use hyphen-minus or mdash variants
+      const pairRegex = /([A-Za-z0-9 .&'\-&]+?)\s+[—-]\s+(\d{1,2}(?:\.\d{1,2})?)%/g;
+      let pm;
+      while ((pm = pairRegex.exec(line)) !== null) {
+        const name = pm[1].trim();
+        const pct = parseFloat(pm[2]);
+        if (name && !Number.isNaN(pct)) winRates[name] = pct;
+      }
+    }
+  }
+
+  // Build top brawlers: prefer S-tier from "By Win Rates" (sorted desc), fallback to names-only S-tier
+  const sPairs = Object.entries(winRates)
+    .filter(([name]) => tiers.S.includes(name))
+    .sort((a, b) => b[1] - a[1]);
+  let top = sPairs.slice(0, 5).map(([name, pct]) => ({ name, winRate: pct, useRate: 0 }));
+  if (top.length < 5) {
+    const fallback = tiers.S.filter(n => !top.find(t => t.name === n)).slice(0, 5 - top.length)
+      .map((name, i) => ({ name, winRate: 70 - i, useRate: 0 }));
+    top = top.concat(fallback);
+  }
 
   // Build teams heuristically from top names
   const teams = [];
