@@ -49,13 +49,34 @@ function displayModes(modes) {
 // Seite laden
 window.onload = function() {
     console.log('Seite wird geladen...');
-    loadMockData();
+    loadDataFromJson().catch(err => {
+        console.warn('Falle auf Mock-Daten zurück:', err);
+        loadMockData();
+    });
     
     // Alle 10 Minuten aktualisieren
     setInterval(() => {
-        loadMockData();
+        loadDataFromJson().catch(() => loadMockData());
     }, 10 * 60 * 1000);
 };
+
+async function loadDataFromJson() {
+    const url = `data.json?v=${Date.now()}`; // Cache-Busting
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    
+    if (Array.isArray(data.topBrawlers)) displayBrawlers(data.topBrawlers);
+    if (Array.isArray(data.teams)) displayTeams(data.teams);
+    if (Array.isArray(data.modes)) displayModes(data.modes);
+    if (Array.isArray(data.news)) renderNewsFromData(data.news);
+    
+    // Optional: Zeitstempel anzeigen
+    const footer = document.querySelector('footer p');
+    if (footer && data.lastUpdated) {
+        footer.textContent = `🚀 Automatisch aktualisiert | Stand: ${new Date(data.lastUpdated).toLocaleDateString('de-DE')}`;
+    }
+}
 
 function loadMockData() {
     console.log('Lade Mock-Daten...');
@@ -121,6 +142,21 @@ function loadMockNews() {
     container.innerHTML = '';
     
     mockNews.forEach(news => {
+        const div = document.createElement('div');
+        div.className = 'news-item';
+        div.innerHTML = `
+            <h3>${news.title}</h3>
+            <p>📅 ${new Date(news.date).toLocaleDateString('de-DE')}</p>
+            <a href="${news.url}" target="_blank" class="news-link">Mehr erfahren</a>
+        `;
+        container.appendChild(div);
+    });
+}
+
+function renderNewsFromData(newsItems) {
+    const container = document.getElementById('news-container');
+    container.innerHTML = '';
+    newsItems.slice(0, 3).forEach(news => {
         const div = document.createElement('div');
         div.className = 'news-item';
         div.innerHTML = `
