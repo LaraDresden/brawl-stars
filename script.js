@@ -53,6 +53,21 @@ window.onload = function() {
         console.warn('Daten konnten nicht geladen werden:', err);
         showErrorPlaceholders();
     });
+    const btn = document.getElementById('refresh-btn');
+    if (btn) {
+        btn.addEventListener('click', async () => {
+            btn.disabled = true;
+            btn.textContent = '⏳ Aktualisiere...';
+            try {
+                await loadDataFromJson();
+                btn.textContent = '✅ Aktualisiert';
+                setTimeout(() => { btn.textContent = '🔄 Jetzt aktualisieren'; btn.disabled = false; }, 1500);
+            } catch (e) {
+                btn.textContent = '❌ Fehler';
+                setTimeout(() => { btn.textContent = '🔄 Jetzt aktualisieren'; btn.disabled = false; }, 1500);
+            }
+        });
+    }
     
     // Alle 10 Minuten aktualisieren
     setInterval(() => {

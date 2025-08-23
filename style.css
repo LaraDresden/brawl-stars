@@ -154,3 +154,22 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
+.header-actions {
+    margin: 10px 0 4px;
+}
+
+.refresh-btn {
+    background: linear-gradient(90deg, #00e5ff, #00ffa3);
+    color: #001a17;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 999px;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+
+.refresh-btn:hover {
+    transform: translateY(-2px);
+}
