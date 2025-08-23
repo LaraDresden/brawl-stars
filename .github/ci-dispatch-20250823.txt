@@ -1,0 +1,2 @@
+Manual dispatch: trigger workflow to fetch latest meta and deploy.
+Timestamp: 2025-08-23
